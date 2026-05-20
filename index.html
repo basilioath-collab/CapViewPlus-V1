@@ -405,6 +405,44 @@ main{padding:14px;overflow-x:hidden}
     .legendItem small{display:block;margin-top:1px;color:#64748b;font-size:10px;font-weight:750;line-height:1.25}
     @media (max-width:700px){.legendMenu{left:0;right:auto;min-width:260px}.legendDropdown{width:100%}.legendDropdown .legendBtn{width:100%;justify-content:space-between}}
 
+
+
+/* --- Patch UI Demandas: evita sobreposição Responsável(is) x % diário --- */
+#demandsFormCard .bd .row{
+  align-items:flex-start;
+}
+#demandsFormCard .field{
+  flex:1 1 190px;
+}
+#demandsFormCard .demandRespField{
+  flex:2 1 360px !important;
+  min-width:280px !important;
+}
+#demandsFormCard .demandPercField{
+  flex:0 0 120px !important;
+  min-width:120px !important;
+}
+#demandsFormCard .demandPercField input{
+  min-width:0 !important;
+  width:100%;
+}
+#demandsFormCard .demandRespField .multiSelect{
+  min-width:0 !important;
+  width:100%;
+}
+#demandsFormCard .demandRespField .multiSelectInput{
+  min-width:140px !important;
+  flex:1 0 140px;
+}
+@media (max-width: 700px){
+  #demandsFormCard .field,
+  #demandsFormCard .demandRespField,
+  #demandsFormCard .demandPercField{
+    flex:1 1 100% !important;
+    min-width:0 !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -4793,8 +4831,8 @@ const svg = buildCapacityVsPlannedSvg({ title: 'Capacidade VSC - Consolidado', s
             el('div', { class:'field' }, [el('label', {}, ['Título']), titulo]),
             el('div', { class:'field' }, [el('label', {}, ['Prédio']), predio]),
             el('div', { class:'field' }, [el('label', {}, ['Focal']), focal]),
-            el('div', { class:'field', style:'flex:1.4' }, [el('label', {}, ['Responsável(is)']), responsavel]),
-            el('div', { class:'field' }, [el('label', {}, ['% diário']), perc]),
+            el('div', { class:'field demandRespField' }, [el('label', {}, ['Responsável(is)']), responsavel]),
+            el('div', { class:'field demandPercField' }, [el('label', {}, ['% diário']), perc]),
             el('div', { class:'field' }, [el('label', {}, ['Prioridade']), prioridade]),
             el('div', { class:'field' }, [el('label', {}, ['Status']), status]),
           ]),
